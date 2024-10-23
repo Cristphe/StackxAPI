@@ -1,6 +1,7 @@
-{
-    "nome": "Teclado",
-    "preco": 150,
-    "qtd": 5
+[
+  {
+    "nome": "Mouse",
+    "preco": 100,
+    "qtd": 10
   }
-  
+]
