@@ -49,7 +49,8 @@ app.post('/produtos', [
     const novoProduto = {
         nome: req.body.nome,
         preco: req.body.preco,
-        qtd: req.body.qtd
+        qtd: req.body.qtd,
+        id: verificaId()
     };
 
     if (!Array.isArray(dado)) {
@@ -59,6 +60,56 @@ app.post('/produtos', [
     salvarDados();
 
     res.status(201).json(novoProduto);
+});
+
+function verificaId(){
+    if(dado.length){
+        return 1;
+    }
+    return Math.max(...dado.map(produto => produto.id)) + 1;
+
+}
+
+app.put('/produtos/:id', [
+    check('nome').isString().isLength({ min: 2 }).withMessage('O nome deve conter ao mínimo 2 letras').optional(),
+    check('preco').isFloat({ gt: 0 }).withMessage('O preço não pode ser negativo').optional(),
+    check('qtd').isInt({ min: 1 }).withMessage('O produto deve ter pelo menos 1 unidade').optional()
+], (req, res) => {
+    const error = validationResult(req);
+    if (!error.isEmpty()) {
+        return res.status(400).json({ error: error.array() });
+    }
+
+    const id = parseInt(req.params.id);
+    const produtoIndex = dado.findIndex(produto => produto.id === id);
+
+    if (produtoIndex === -1) {
+        return res.status(404).json({ error: 'Produto não encontrado' });
+    }
+
+    const produtoAtualizado = {
+        ...dado[produtoIndex],
+        ...req.body
+    };
+
+    dado[produtoIndex] = produtoAtualizado;
+    salvarDados();
+
+    res.status(200).json(produtoAtualizado);
+});
+
+app.delete('/produtos/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const produtoIndex = dado.findIndex(produto => produto.id === id);
+
+    if (produtoIndex === -1) {
+        return res.status(404).json({ error: 'Produto não encontrado' });
+    }
+
+    dado.splice(produtoIndex, 1);
+    salvarDados();
+
+    res.status(204).send();
 });
 
 app.listen(3000, () => {

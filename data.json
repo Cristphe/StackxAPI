@@ -1,7 +1,20 @@
 [
   {
-    "nome": "Mouse",
+    "nome": "moto",
     "preco": 100,
-    "qtd": 10
+    "qtd": 10,
+    "id": null
+  },
+  {
+    "nome": "carro",
+    "preco": 100,
+    "qtd": 10,
+    "id": 1
+  },
+  {
+    "nome": "caminhap",
+    "preco": 100,
+    "qtd": 10,
+    "id": 1
   }
 ]
