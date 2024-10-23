@@ -60,5 +60,22 @@ localhost:3000/produtos/2
 Clique em Send e será apagado o produto escolhido
 
 
+Funcionamento do código:
 
+O FS é um módulo do Node que serve para ler e escrever arquivos, fazendo assim possivel a verificação de arquivos existentes, modificação e criação de novos produtos.
 
+Express é um Framework que possibilita o Node ser um aplicativo web
+
+Express-validator serve para a validação dos dados da requisição
+
+app.user(express.json()) é para ler as requisições em formato JSON
+
+app.get('/produtos') está puxando os dados existentes dentro da URL /produtos
+
+app.post('/produtos') está enviando novos dados para a URL /produtos
+
+app.put('/produtos/:id') atualiza os dados de um produto já existente, puxando especificamente o ID do produto.
+
+app.delete('/produtos/:id') delete um produto existente puxando o ID do mesmo.
+
+app.listen(3000, ()) abre um servidor na porta 3000, para conseguir fazer as requisições HTTP
