@@ -1,20 +1,20 @@
 [
   {
-    "nome": "moto",
-    "preco": 100,
-    "qtd": 10,
-    "id": null
-  },
-  {
     "nome": "carro",
     "preco": 100,
     "qtd": 10,
-    "id": 1
+    "id": 2
   },
   {
-    "nome": "caminhap",
+    "nome": "moto",
     "preco": 100,
     "qtd": 10,
-    "id": 1
+    "id": 3
+  },
+  {
+    "nome": "lancha",
+    "preco": 100,
+    "qtd": 10,
+    "id": 4
   }
 ]

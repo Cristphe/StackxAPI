@@ -63,7 +63,7 @@ app.post('/produtos', [
 });
 
 function verificaId(){
-    if(dado.length){
+    if(dado.length === 0){
         return 1;
     }
     return Math.max(...dado.map(produto => produto.id)) + 1;
